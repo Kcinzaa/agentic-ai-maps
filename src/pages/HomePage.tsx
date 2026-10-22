@@ -1,7 +1,7 @@
 // ============================================================
 // src/pages/HomePage.tsx — Full storytelling with rich animations
 // ============================================================
-import { useEffect, useRef, useState, type FC } from 'react';
+import { useEffect, useRef, type FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/global.css';
 import '../styles/home.css';
