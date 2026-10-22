@@ -31,6 +31,14 @@
   opacity: 1;
   transform: translateY(0);
 }
+/* Hero section overrides - always visible */
+.hero [data-reveal],
+.hero [data-reveal-left],
+.hero [data-reveal-right],
+.hero [data-reveal-scale] {
+  opacity: 1 !important;
+  transform: none !important;
+}
 [data-reveal-left] {
   opacity: 0;
   transform: translateX(-40px);

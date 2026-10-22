@@ -70,7 +70,8 @@ function useScrollEffects() {
           obs.unobserve(e.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    // rootMargin top 200px: catches elements already visible on initial load
+    }, { threshold: 0.05, rootMargin: '200px 0px 0px 0px' });
     revealEls.forEach(el => obs.observe(el));
 
     // --- Chat bubbles stagger ---

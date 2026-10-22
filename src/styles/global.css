@@ -22,6 +22,7 @@
   --bg-dark:     #050e18;
   --bg-navy:     #0a1628;
   --bg-mid:      #0d1f35;
+  --bg-hero:     #050e18;
 
   /* Text */
   --text-1:      #0d1a26;
@@ -34,6 +35,7 @@
 
   /* Typography — Space Grotesk (Western) + Sarabun (Thai) */
   --font-head:   'Space Grotesk', 'Sarabun', sans-serif;
+  --font-serif:  'Space Grotesk', 'Sarabun', sans-serif;
   --font-body:   'Sarabun', 'Space Grotesk', sans-serif;
   --font-mono:   'JetBrains Mono', 'Courier New', monospace;
 
