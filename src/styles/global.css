@@ -1,0 +1,94 @@
+/* ============================================================
+   src/styles/global.css — Design tokens (Agentic Map theme)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+
+:root {
+  /* Colors */
+  --teal:        #1de9b6;
+  --teal-mid:    #00bfa5;
+  --teal-dark:   #00897b;
+  --accent:      #00a86b;
+  --accent-dark: #007a4d;
+  --accent-bg:   #e6f4ef;
+  --amber:       #f59e0b;
+  --red:         #ef4444;
+  --blue:        #3b82f6;
+  --purple:      #8b5cf6;
+
+  /* Backgrounds */
+  --bg:          #ffffff;
+  --bg-alt:      #f7f9f8;
+  --bg-dark:     #050e18;
+  --bg-navy:     #0a1628;
+  --bg-mid:      #0d1f35;
+
+  /* Text */
+  --text-1:      #0d1a26;
+  --text-2:      #3d5166;
+  --text-3:      #6b859e;
+
+  /* Borders */
+  --border:      #e8ecef;
+  --border-mid:  #c8d0d8;
+
+  /* Typography — Space Grotesk (Western) + Sarabun (Thai) */
+  --font-head:   'Space Grotesk', 'Sarabun', sans-serif;
+  --font-body:   'Sarabun', 'Space Grotesk', sans-serif;
+  --font-mono:   'JetBrains Mono', 'Courier New', monospace;
+
+  /* Spacing */
+  --nav-h:       56px;
+  --max-w:       900px;
+  --max-w-wide:  1100px;
+  --radius:      8px;
+  --radius-lg:   14px;
+  --tr:          0.2s ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text-1);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+button { cursor: pointer; font-family: var(--font-body); border: none; }
+a { text-decoration: none; color: inherit; }
+code { font-family: var(--font-mono); }
+
+.container      { max-width: var(--max-w);      margin: 0 auto; padding: 0 1.5rem; }
+.container-wide { max-width: var(--max-w-wide); margin: 0 auto; padding: 0 1.5rem; }
+
+/* ── Shared section label ── */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.6rem;
+}
+.section-label.teal-label { color: var(--teal); }
+
+/* ── Shared code inline ── */
+code.inline {
+  font-family: var(--font-mono);
+  font-size: 0.82em;
+  color: var(--accent-dark);
+  background: var(--accent-bg);
+  padding: 1px 5px;
+  border-radius: 3px;
+}

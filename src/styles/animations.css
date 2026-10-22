@@ -1,0 +1,321 @@
+/* ============================================================
+   src/styles/animations.css — All scroll & micro animations
+   ============================================================ */
+
+/* ── Reading progress bar ── */
+.reading-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  z-index: 200;
+  background: rgba(29,233,182,0.15);
+  pointer-events: none;
+}
+.reading-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--teal), #00e5ff);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.1s linear;
+  box-shadow: 0 0 10px rgba(29,233,182,0.6);
+}
+
+/* ── Scroll reveal states ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+              transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+[data-reveal-left] {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+              transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+[data-reveal-left].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+[data-reveal-right] {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+              transform 0.7s cubic-bezier(0.22,1,0.36,1);
+}
+[data-reveal-right].revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+[data-reveal-scale] {
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+              transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+[data-reveal-scale].revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delays for children */
+[data-stagger] > *:nth-child(1)  { transition-delay: 0ms; }
+[data-stagger] > *:nth-child(2)  { transition-delay: 80ms; }
+[data-stagger] > *:nth-child(3)  { transition-delay: 160ms; }
+[data-stagger] > *:nth-child(4)  { transition-delay: 240ms; }
+[data-stagger] > *:nth-child(5)  { transition-delay: 320ms; }
+[data-stagger] > *:nth-child(6)  { transition-delay: 400ms; }
+
+/* ── Counter numbers ── */
+.counter-val {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s;
+}
+
+/* ── Compare bar animation ── */
+.compare-bar {
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.22,1,0.36,1);
+}
+.compare-bar.animated {
+  /* width set by inline style */
+}
+
+/* ── Section entrance ── */
+.story-section {
+  transition: none;
+}
+
+/* ── Nav entrance ── */
+.nav {
+  animation: navSlideDown 0.8s cubic-bezier(0.22,1,0.36,1) both;
+}
+@keyframes navSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+/* ── Hero layers parallax ── */
+.hero-grid {
+  will-change: transform;
+  transition: transform 0.05s linear;
+}
+
+/* ── Problem chat bubble entrance ── */
+.ps-msg {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.ps-msg.chat-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── MCP tool card hover ── */
+.mcp-tool-card {
+  transition: transform 0.25s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+}
+.mcp-tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(29,233,182,0.12);
+  border-color: rgba(29,233,182,0.4);
+}
+
+/* ── Button pulse on hover ── */
+.btn-teal {
+  position: relative;
+  overflow: hidden;
+}
+.btn-teal::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.25), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.btn-teal:hover::after { opacity: 1; }
+.btn-teal:active { transform: scale(0.97); }
+
+/* ── Tool chip hover ── */
+.tool-chip {
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.tool-chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(29,233,182,0.5);
+  background: rgba(29,233,182,0.1);
+}
+
+/* ── Finding card ── */
+.finding-cell {
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+.finding-cell::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.finding-cell:hover::before { transform: scaleX(1); }
+
+.finding-num {
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.finding-cell:hover .finding-num {
+  transform: scale(1.08);
+}
+
+/* ── Route stat hover ── */
+.route-stat {
+  transition: transform 0.25s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.25s ease,
+              border-color 0.25s ease;
+}
+.route-stat:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border-color: var(--accent);
+}
+
+/* ── Route step hover ── */
+.route-step {
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.route-step:hover {
+  background: rgba(0,168,107,0.06);
+  transform: translateX(4px);
+}
+
+/* ── Quote highlight ── */
+.highlight-quote {
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.highlight-quote:hover {
+  border-color: rgba(29,233,182,0.6);
+  background: rgba(29,233,182,0.08);
+}
+
+/* ── Scroll hint bounce ── */
+@keyframes bounce-soft {
+  0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+  50%      { transform: translateX(-50%) translateY(10px); opacity: 1; }
+}
+.scroll-indicator { animation: bounce-soft 2.2s ease-in-out infinite; }
+
+/* ── Hero title glitch-shimmer ── */
+.hero-title-accent {
+  position: relative;
+  display: inline-block;
+  animation: shimmer 4s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%,100% { text-shadow: 0 0 20px rgba(29,233,182,0.3); }
+  50%      { text-shadow: 0 0 40px rgba(29,233,182,0.7), 0 0 80px rgba(29,233,182,0.3); }
+}
+
+/* ── Typing cursor ── */
+.typing-cursor {
+  display: inline-block;
+  width: 2px; height: 1em;
+  background: var(--teal);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink-cur 1s step-end infinite;
+}
+@keyframes blink-cur {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0; }
+}
+
+/* ── Section label underline animation ── */
+.section-label.teal-label {
+  position: relative;
+  display: inline-block;
+}
+.section-label.teal-label::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.22,1,0.36,1) 0.3s;
+}
+.section-label.teal-label.revealed::after {
+  transform: scaleX(1);
+}
+
+/* ── Horizontal rule divider animate ── */
+.hero-divider {
+  animation: expandWidth 1.2s cubic-bezier(0.22,1,0.36,1) 0.8s both;
+}
+@keyframes expandWidth {
+  from { width: 0; opacity: 0; }
+  to   { width: 44px; opacity: 1; }
+}
+
+/* ── Eyebrow pill fade-in ── */
+.hero-eyebrow {
+  animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+}
+.hero-title {
+  animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.35s both;
+}
+.hero-desc {
+  animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s both;
+}
+.hero-meta-row {
+  animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.65s both;
+}
+.hero-btns {
+  animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.8s both;
+}
+
+/* ── Problem terminal animate in ── */
+.problem-scenario {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.problem-scenario:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(29,233,182,0.08);
+}
+
+/* ── CTA section pulsing glow ── */
+.cta-section {
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(29,233,182,0.07), transparent 70%);
+  animation: ctaPulse 5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes ctaPulse {
+  0%,100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); }
+  50%      { opacity: 1;   transform: translate(-50%,-50%) scale(1.2); }
+}
+
+/* ── Smooth scroll snap hint ── */
+html { scroll-behavior: smooth; }
